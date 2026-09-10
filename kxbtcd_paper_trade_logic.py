@@ -80,7 +80,7 @@ def check_and_close_settled(open_pos, closed_pos):
 
     for _, row in open_pos.iterrows():
         market = settlement_info.get(row["ticker"])
-        if market and market.get("status") == "settled":
+        if market and market.get("status") == "finalized":
             result = str(market.get("result", "")).lower()
             won = (result == row["favored_side"])
             # PnL per $1 risked: if won, receive $1 - entry_price; if lost, lose entry_price
